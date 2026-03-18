@@ -40,7 +40,8 @@ while true; do
 	  ;;
   	  2)
 	  echo "Corriendo proceso"
-	  bash $HOME/EPNro1/consolidar.sh 
+	  bash $HOME/EPNro1/consolidar.sh &
+	  wait 
 	  echo -e "Ejecutado.\n"
 	  ;;
 	  3)
