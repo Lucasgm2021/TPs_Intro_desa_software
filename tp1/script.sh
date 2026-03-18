@@ -25,6 +25,7 @@ crear_entorno(){
 		echo "Ya existe la carpeta $HOME/EPNro1"
 	fi
 }
+
 while true; do
 	show_options
 	echo -n "Ingresa un valor: "
@@ -39,6 +40,8 @@ while true; do
 	  ;;
   	  2)
 	  echo "Corriendo proceso"
+	  bash $HOME/EPNro1/consolidar.sh 
+	  echo -e "Ejecutado.\n"
 	  ;;
 	  3)
 	  echo "Mostrando alumnos ordenados por padron"
