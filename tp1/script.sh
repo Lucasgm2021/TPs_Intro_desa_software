@@ -50,6 +50,9 @@ while true; do
 	  fi
 	  ;;
   	  4)
+	  if [ -f $FILENAME ]; then	
+	  	sort -t " " -n -r $FILENAME | head -n 10
+	  fi
 	  echo "Mostrando 10 notas mas altas"
 	  ;;	  
 	  5)
