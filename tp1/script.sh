@@ -50,16 +50,22 @@ while true; do
 	  fi
 	  ;;
   	  4)
+	  echo "Mostrando 10 notas mas altas"
 	  if [ -f $FILENAME ]; then	
 	  	sort -t " " -n -r $FILENAME | head -n 10
 	  fi
-	  echo "Mostrando 10 notas mas altas"
 	  ;;	  
 	  5)
-	  echo "Buscando info de alumno"
+	  echo -n "Introduce un padron: "
+	  read padron 
+	  if [ -f $FILENAME ]; then	
+		echo "Mostrando info del alumno de padron $padron"
+		grep $padron $FILENAME
+	  fi
 	  ;;
   	  6)
 	  echo "Saliendo..."
+	  break
 	  ;;
   	  *)
 	  echo "El valor seleccionado es $value, no es una opcion valida"
