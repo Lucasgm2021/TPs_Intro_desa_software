@@ -45,6 +45,9 @@ while true; do
 	  ;;
 	  3)
 	  echo "Mostrando alumnos ordenados por padron"
+	  if [ -f $FILENAME ]; then 
+	  	sort -t " " -n $FILENAME
+	  fi
 	  ;;
   	  4)
 	  echo "Mostrando 10 notas mas altas"
