@@ -29,7 +29,12 @@ crear_entorno(){
 while getopts "d" flag; do
     case "${flag}" in
         d)
-		rm -r "$HOME/EPNro1"
+		if [ -d "$HOME/EPNro1" ]; then
+			rm -r "$HOME/EPNro1"
+			echo "Entorno en EPNro1 eliminado."
+		else 
+			echo "No existe el entorno $HOME/EPNro1, no se eliminara nada"
+		fi
 		pkill -f "$HOME/EPNro1/consolidar.sh"
 		;;
         *) echo "Flag desconocida" ;;
