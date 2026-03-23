@@ -26,13 +26,20 @@ crear_entorno(){
 	fi
 }
 
+while getopts "d" flag; do
+    case "${flag}" in
+        d)
+		rm -r "$HOME/EPNro1"
+		pkill -f "$HOME/EPNro1/consolidar.sh"
+		;;
+        *) echo "Flag desconocida" ;;
+    esac
+done
+
 while true; do
 	show_options
 	echo -n "Ingresa un valor: "
 	read value
-#	if [ $((value)) == 6 ]; then
-#		break
-#	fi
 	case $value in 
 	  1)
 	  echo "Creando entorno"
