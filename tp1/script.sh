@@ -36,6 +36,7 @@ while getopts "d" flag; do
 			echo "No existe el entorno $HOME/EPNro1, no se eliminara nada"
 		fi
 		pkill -f "$HOME/EPNro1/consolidar.sh"
+		echo -e "Proceso $HOME/EPNro1/consolidar.sh detenido si estaba ejecutandose.\n"
 		;;
         *) echo "Flag desconocida" ;;
     esac
@@ -52,8 +53,12 @@ while true; do
 	  ;;
   	  2)
 	  echo "Corriendo proceso"
-	  bash $HOME/EPNro1/consolidar.sh & 
-	  echo -e "Ejecutado.\n"
+	  if [ -f "$HOME/EPNro1/consolidar.sh"]; then 
+	  	bash $HOME/EPNro1/consolidar.sh & 
+		echo -e "Ejecutado.\n"
+	  else
+	  	echo "No existe el archivo $HOME/EPNro1/consolidar.sh"
+	  fi
 	  ;;
 	  3)
 	  echo "Mostrando alumnos ordenados por padron"
@@ -95,7 +100,4 @@ while true; do
 	  echo "El valor seleccionado es $value, no es una opcion valida"
 	  ;;
 	esac
-
 done
-
-

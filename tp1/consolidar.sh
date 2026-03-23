@@ -6,7 +6,7 @@ contenido=$(ls -A $path_entrada)
 
 if [ -z "$contenido" ]; then 
     echo "No hay archivos en $path_entrada"
-    exit 1
+    exit
 fi
 
 for file in "$path_entrada"/*; do
