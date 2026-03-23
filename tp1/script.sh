@@ -14,7 +14,7 @@ show_options(){
 }
 
 crear_entorno(){
-	if [ ! -d "$HOME/“EPNro1" ];then
+	if [ ! -d "$HOME/EPNro1" ];then
 		mkdir "$HOME/EPNro1"
 		mkdir "$HOME/EPNro1/entrada"
 		mkdir "$HOME/EPNro1/salida"
