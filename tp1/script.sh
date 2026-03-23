@@ -47,21 +47,33 @@ while true; do
 	  3)
 	  echo "Mostrando alumnos ordenados por padron"
 	  if [ -f $FILENAME ]; then 
-	  	sort -t " " -n $FILENAME
+	  	sort -t " " -n -k 1 $FILENAME
+	  else 
+	  	echo "Archivo $FILENAME no encontrado"
 	  fi
 	  ;;
   	  4)
-	  echo "Mostrando 10 notas mas altas"
 	  if [ -f $FILENAME ]; then	
-	  	sort -t " " -n -r $FILENAME | head -n 10
+	    echo "Mostrando 10 notas mas altas"
+	  	sort -t " " -n -r -k 5 $FILENAME | head -n 10
+	  else 
+	  	echo "Archivo $FILENAME no encontrado"
 	  fi
 	  ;;	  
 	  5)
 	  echo -n "Introduce un padron: "
 	  read padron 
-	  if [ -f $FILENAME ]; then	
-		echo "Mostrando info del alumno de padron $padron"
-		grep $padron $FILENAME
+
+	  if [[ ! $padron =~ ^[0-9]{5,6}$ ]]; then
+		echo -e "\n$padron No es un padron valido.\n"
+	  else 
+		if [ -f $FILENAME ]; then	
+			echo -e "\nMostrando info del alumno de padron: $padron.\n"
+			grep -w $padron $FILENAME
+			echo ""
+		else 
+			echo -e "\nArchivo $FILENAME no encontrado\n"
+		fi	
 	  fi
 	  ;;
   	  6)

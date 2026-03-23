@@ -4,7 +4,7 @@ path_procesado="$HOME/EPNro1/procesado"
 
 contenido=$(ls -A $path_entrada)
 
-if [ -z $contenido]; then 
+if [ -z "$contenido" ]; then 
     echo "No hay archivos en $path_entrada"
     exit 1
 fi
