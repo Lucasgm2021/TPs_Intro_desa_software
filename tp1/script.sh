@@ -13,19 +13,6 @@ show_options(){
   echo ""
 }
 
-crear_entorno(){
-	if [ ! -d "$HOME/EPNro1" ];then
-		mkdir "$HOME/EPNro1"
-		mkdir "$HOME/EPNro1/entrada"
-		mkdir "$HOME/EPNro1/salida"
-		mkdir "$HOME/EPNro1/procesado"
-		echo "Creadas carpetas en $HOME/EPNro1"
-		cp "consolidar.sh" "$HOME/EPNro1/consolidar.sh"
-	else 
-		echo "Ya existe la carpeta $HOME/EPNro1"
-	fi
-}
-
 while true; do
 	show_options
 	echo -n "Ingresa un valor: "
@@ -33,7 +20,16 @@ while true; do
 	case $value in 
 	  1)
 	  echo "Creando entorno"
-	  crear_entorno
+	  if [ ! -d "$HOME/EPNro1" ];then
+		mkdir "$HOME/EPNro1"
+		mkdir "$HOME/EPNro1/entrada"
+		mkdir "$HOME/EPNro1/salida"
+		mkdir "$HOME/EPNro1/procesado"
+		echo "Creadas carpetas en $HOME/EPNro1"
+		cp "consolidar.sh" "$HOME/EPNro1/consolidar.sh"
+	  else 
+		echo "Ya existe la carpeta $HOME/EPNro1"
+	  fi
 	  ;;
   	  2)
 	  echo "Corriendo proceso"
