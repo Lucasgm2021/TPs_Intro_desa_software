@@ -13,10 +13,11 @@ show_options(){
   echo ""
 }
 
-while true; do
-	show_options
-	echo -n "Ingresa un valor: "
-	read value
+show_options
+echo -n "Ingresa un valor: "
+read value
+
+while  [[ "$value" != "6"]];; do
 	case $value in 
 	  1)
 	  echo "Creando entorno"
@@ -72,14 +73,13 @@ while true; do
 		fi	
 	  fi
 	  ;;
-  	  6)
-	  echo "Saliendo..."
-	  break
-	  ;;
   	  *)
 	  echo "El valor seleccionado es $value, no es una opcion valida"
 	  ;;
 	esac
+	show_options
+	echo -n "Ingresa un valor: "
+	read value
 done
 
 while getopts "d" flag; do
