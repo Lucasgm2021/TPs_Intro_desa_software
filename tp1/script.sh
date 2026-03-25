@@ -26,22 +26,6 @@ crear_entorno(){
 	fi
 }
 
-while getopts "d" flag; do
-    case "${flag}" in
-        d)
-		if [ -d "$HOME/EPNro1" ]; then
-			rm -r "$HOME/EPNro1"
-			echo "Entorno en EPNro1 eliminado."
-		else 
-			echo "No existe el entorno $HOME/EPNro1, no se eliminara nada"
-		fi
-		pkill -f "$HOME/EPNro1/consolidar.sh"
-		echo -e "Proceso $HOME/EPNro1/consolidar.sh detenido si estaba ejecutandose.\n"
-		;;
-        *) echo "Flag desconocida" ;;
-    esac
-done
-
 while true; do
 	show_options
 	echo -n "Ingresa un valor: "
@@ -100,4 +84,20 @@ while true; do
 	  echo "El valor seleccionado es $value, no es una opcion valida"
 	  ;;
 	esac
+done
+
+while getopts "d" flag; do
+    case "${flag}" in
+        d)
+		if [ -d "$HOME/EPNro1" ]; then
+			rm -r "$HOME/EPNro1"
+			echo "Entorno en EPNro1 eliminado."
+		else 
+			echo "No existe el entorno $HOME/EPNro1, no se eliminara nada"
+		fi
+		pkill -f "$HOME/EPNro1/consolidar.sh"
+		echo -e "Proceso $HOME/EPNro1/consolidar.sh detenido si estaba ejecutandose.\n"
+		;;
+        *) echo "Flag desconocida" ;;
+    esac
 done
