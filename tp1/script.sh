@@ -17,7 +17,7 @@ show_options
 echo -n "Ingresa un valor: "
 read value
 
-while  [[ "$value" != "6"]];; do
+while  [[ "$value" != "6" ]]; do
 	case $value in 
 	  1)
 	  echo "Creando entorno"
