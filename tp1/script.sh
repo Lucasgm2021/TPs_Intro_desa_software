@@ -60,13 +60,27 @@ while  [[ "$value" != "6" ]]; do
 	  5)
 	  echo -n "Introduce un padron: "
 	  read padron 
-
+	  : '
 	  if [[ ! $padron =~ ^[0-9]{5,6}$ ]]; then
 		echo -e "\n$padron No es un padron valido.\n"
 	  else 
 		if [ -f $FILENAME ]; then	
 			echo -e "\nMostrando info del alumno de padron: $padron.\n"
 			grep -w $padron $FILENAME
+			echo ""
+		else 
+			echo -e "\nArchivo $FILENAME no encontrado\n"
+		fi	
+	  fi
+	  ;;
+	  '
+	  if [[ ! $padron =~ ^[0-9]{5,6}$ ]]; then
+		echo -e "\n$padron No es un padron valido.\n"
+	  else 
+		if [ -f $FILENAME ]; then	
+			pattern="^$padron$"
+			echo -e "\nMostrando info del alumno de padron: $padron.\n"
+			awk -v pattern=$pattern ' $1 ~ pattern { print }' $FILENAME
 			echo ""
 		else 
 			echo -e "\nArchivo $FILENAME no encontrado\n"
