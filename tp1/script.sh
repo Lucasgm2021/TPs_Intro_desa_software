@@ -34,7 +34,7 @@ while  [[ "$value" != "6" ]]; do
 	  ;;
   	  2)
 	  echo "Corriendo proceso"
-	  if [ -f "$HOME/EPNro1/consolidar.sh"]; then 
+	  if [ -f "$HOME/EPNro1/consolidar.sh" ]; then 
 	  	bash $HOME/EPNro1/consolidar.sh & 
 		echo -e "Ejecutado.\n"
 	  else
