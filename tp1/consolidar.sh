@@ -8,11 +8,12 @@ if [ -z "$contenido" ]; then
     exit
 fi
 
-for file in "$path_entrada"/*; do
-    if [ -d $file ]; then continue; fi
+find "$path_entrada" -type f -print0 | while IFS= read -r -d '' file; do
     while read LINE; do
         echo $LINE >> $FILENAME
     done < $file
+    mv $file $path_procesado
 done
 
-mv "$path_entrada"/* $path_procesado
+#borro todo lo que no haya sido contemplado en el loop anterior.
+rm -rf $path_entrada
